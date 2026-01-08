@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <PostHogProvider>
           <Navbar />
-          <div className="absolute inset-0 z[-1] min-h-screen">
+          <div className="absolute inset-0 -z-10 min-h-screen">
             <LightRays
               raysOrigin="top-center-offset"
               raysColor="#5dfeca"
