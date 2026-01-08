@@ -2,6 +2,7 @@ import BookEvent from "@/components/BookEvent";
 import EventCard from "@/components/EventCard";
 import { IEvent } from "@/database";
 import { getSimilarEvents } from "@/lib/actions/events.action";
+import { cacheLife } from "next/cache";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -45,6 +46,8 @@ const EventsDetailsPage = async ({
 }: {
   params: Promise<{ slug: string }>;
 }) => {
+  "use cache";
+  cacheLife("hours");
   const { slug } = await params;
   const res = await fetch(`${BASE_URL}/api/events/${slug}`);
   const event = await res.json();
@@ -66,7 +69,6 @@ const EventsDetailsPage = async ({
   } = event;
   let bookings = 10;
   const similarEvents: IEvent[] = await getSimilarEvents(slug);
-  console.log("similar events", { ...similarEvents[0]._doc });
 
   if (!event) return notFound();
   return (
@@ -123,7 +125,7 @@ const EventsDetailsPage = async ({
             ) : (
               <div className="text-sm">Be the first to book your spot</div>
             )}
-            <BookEvent />
+            <BookEvent eventId={event._id} slug={event.slug} />
           </div>
         </aside>
       </div>
