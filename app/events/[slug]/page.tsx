@@ -78,7 +78,6 @@ const EventsDetailsPage = async ({
         <p>{description}</p>
       </div>
       <div className="details">
-        {/* left side- event details */}
         <div className="content">
           <Image
             src={image}
@@ -114,7 +113,7 @@ const EventsDetailsPage = async ({
           </section>
           <EventTags tags={tags} />
         </div>
-        {/* right side - booking form */}
+
         <aside className="booking">
           <div className="signup-card">
             <h2>Book Your Spot</h2>

@@ -11,7 +11,7 @@ const BookEvent = ({ eventId, slug }: { eventId: string; slug: string }) => {
     if (success) {
       setSubmitted(true);
     } else {
-      console.log("booking failed error:");
+      console.log("booking failed error");
     }
   };
   return (
